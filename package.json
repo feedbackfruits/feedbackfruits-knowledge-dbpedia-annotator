@@ -1,0 +1,27 @@
+{
+  "name": "feedbackfruits-knowledge-dbpedia-annotator",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Steffan Sluis",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "memux": "^0.3.1",
+    "node-fetch": "^1.6.3",
+    "p-queue": "^0.2.0",
+    "qs": "^6.4.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feedbackfruits/feedbackfruits-knowledge-dbpedia-annotator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feedbackfruits/feedbackfruits-knowledge-dbpedia-annotator/issues"
+  },
+  "homepage": "https://github.com/feedbackfruits/feedbackfruits-knowledge-dbpedia-annotator#readme",
+  "description": ""
+}
