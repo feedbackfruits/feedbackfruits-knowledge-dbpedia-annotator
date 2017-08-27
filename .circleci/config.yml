@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/feedbackfruits-knowledge-text-annotator
+    docker:
+      - image: node:8
+        environment:
+          NODE_ENV: test
+          INPUT_TOPIC: test_updates
+          OUTPUT_TOPIC: test_update_requests
+          KAFKA_ADDRESS: localhost:9092
+          START_PAGE: 1
+          END_PAGE: 2
+          PAGE_SIZE: 10
+      - image: wurstmeister/zookeeper:latest
+      - image: wurstmeister/kafka:latest
+        environment:
+          KAFKA_AUTO_CREATE_TOPICS_ENABLE: false
+          KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+          KAFKA_CREATE_TOPICS: "test_updates:1:1,test_update_requests:1:1"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          - node_modules-
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: node_modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+
+      - run: npm test
+      - run: npm run coverage
+
+      - store_artifacts:
+          path: coverage
+
+      - deploy:
+          name: Deploy to Heroku
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push git@heroku.com:staging-fbf-knowledge-dbp-ann.git $CIRCLE_SHA1:refs/heads/master -f
+            elif [[ $CIRCLE_TAG =~ ^v[0-9]+\.[0-9]+ ]]; then
+              git push git@heroku.com:fbf-knowledge-dbpedia-annotato.git $CIRCLE_SHA1:refs/heads/master -f
+            fi
