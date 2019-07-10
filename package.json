@@ -15,55 +15,27 @@
     "coverage": "codecov",
     "watch": "nodemon lib"
   },
-  "nyc": {},
-  "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
-    "source": [
-      "src/**/*.ts"
-    ],
-    "match": [],
-    "concurrency": 5,
-    "failFast": true,
-    "failWithoutAssertions": false,
-    "tap": false,
-    "powerAssert": false,
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
   "author": "Steffan Sluis",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^8.0.25",
-    "dotenv": "^2.0.0",
-    "feedbackfruits-knowledge-context": "feedbackfruits/feedbackfruits-knowledge-context",
-    "feedbackfruits-knowledge-engine": "github:feedbackfruits/feedbackfruits-knowledge-engine#semver:^1.1.0",
-    "memux": "github:knowledge-express/memux#semver:~0.4.0",
-    "node-fetch": "^1.6.3",
-    "p-queue": "^0.2.0",
+    "@types/node": "^12.6.2",
+    "dotenv": "^8.0.0",
+    "feedbackfruits-knowledge-engine": "github:feedbackfruits/feedbackfruits-knowledge-engine#^1.4.5",
+    "memux": "github:knowledge-express/memux#^0.4.0",
+    "node-fetch": "^2.6.0",
+    "p-queue": "^6.0.2",
     "qs": "^6.4.0",
-    "typescript": "^2.4.2"
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "ava": "^0.20.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1",
-    "codecov": "^1.0.1",
+    "ava": "^2.2.0",
+    "codecov": "^3.5.0",
     "nodemon": "^1.11.0",
-    "nyc": "^11.1.0"
+    "nyc": "^14.1.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/feedbackfruits/feedbackfruits-knowledge-dbpedia-annotator.git"
-  },
-  "engines": {
-    "node": ">= 8",
-    "npm": ">= 5"
   },
   "bugs": {
     "url": "https://github.com/feedbackfruits/feedbackfruits-knowledge-dbpedia-annotator/issues"

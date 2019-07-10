@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/feedbackfruits-knowledge-text-annotator
     docker:
-      - image: node:8
+      - image: node:10
         environment:
           NODE_ENV: test
           INPUT_TOPIC: test_updates
@@ -22,19 +22,19 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - node_modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          - node_modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install dependencies
-          command: npm install
+          command: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: node_modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          key: node_modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
-      - run: npm test
-      - run: npm run coverage
+      - run: yarn test
+      - run: yarn run coverage
 
       - store_artifacts:
           path: coverage
