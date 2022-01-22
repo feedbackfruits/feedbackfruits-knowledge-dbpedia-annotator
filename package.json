@@ -42,7 +42,7 @@
     "feedbackfruits-knowledge-context": "feedbackfruits/feedbackfruits-knowledge-context",
     "feedbackfruits-knowledge-engine": "github:feedbackfruits/feedbackfruits-knowledge-engine#semver:^1.1.0",
     "memux": "github:knowledge-express/memux#semver:~0.4.0",
-    "node-fetch": "^1.6.3",
+    "node-fetch": "^3.1.1",
     "p-queue": "^0.2.0",
     "qs": "^6.4.0",
     "typescript": "^2.4.2"
